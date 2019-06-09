@@ -8,7 +8,7 @@ scalaVersion        := "2.12.8"
 val scalaCheck = "org.scalacheck" %% "scalacheck" % "1.14.0" % Test
 val scalaTest  = "org.scalatest"  %% "scalatest"  % "3.0.7"  % Test
 
-libraryDependencies += scalaCheck
+libraryDependencies ++= Seq(scalaCheck, scalaTest)
 
 def scalacOptionsForVersion(version: String): Seq[String] = {
   // format: off
