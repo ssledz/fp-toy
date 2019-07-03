@@ -74,5 +74,7 @@ scalacOptions ++= scalacOptionsForVersion(scalaVersion.value)
 val badConsoleFlags = Seq("-Xfatal-warnings", "-Ywarn-unused:imports")
 scalacOptions in (Compile, console) ~= (_.filterNot(badConsoleFlags.contains(_)))
 
+testFrameworks := Seq(TestFrameworks.ScalaCheck, TestFrameworks.ScalaTest)
+
 enablePlugins(ScalafmtPlugin)
 
