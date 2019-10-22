@@ -1,5 +1,7 @@
 package control
 
+import control.Try._
+
 trait Try[+A] {
 
   def flatMap[B](f: A => Try[B]): Try[B] = this match {
@@ -22,8 +24,8 @@ object Try {
 
   def pure[A](a: => A): Try[A] = apply(a)
 
+  case class Success[A](a: A) extends Try[A]
+
+  case class Failure(exception: Exception) extends Try[Nothing]
+
 }
-
-case class Success[A](a: A) extends Try[A]
-
-case class Failure(exception: Exception) extends Try[Nothing]

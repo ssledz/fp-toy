@@ -1,6 +1,5 @@
 package control
 
-import applicative.Applicative
 import data._
 
 import scala.annotation.tailrec

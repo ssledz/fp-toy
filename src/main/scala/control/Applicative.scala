@@ -1,4 +1,4 @@
-package applicative
+package control
 
 import data.{Functor, Option}
 

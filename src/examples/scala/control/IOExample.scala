@@ -1,9 +1,9 @@
 package control
 
 import control.MonadInstances._
+import control.Try._
 
 import scala.io.StdIn
-
 object IOExample extends App {
 
   val askForAge: IO[Unit] = IO {

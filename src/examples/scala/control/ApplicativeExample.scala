@@ -1,10 +1,10 @@
-package applicative
+package control
 
-import applicative.ApplicativeInstances._
-import applicative.ApplicativeSyntax._
+import control.ApplicativeInstances._
+import control.ApplicativeSyntax._
 import data.Option
 
-object OptionExample extends App {
+object ApplicativeExample extends App {
 
   println((Option.pure(1), Option.pure(2)).mapN(_ + _))
   println((Option.empty[Int], Option.pure(2)).mapN(_ + _))

@@ -1,6 +1,7 @@
 package control.monad
 
-import control.{Failure, Reader, State, Success, Try, Writer}
+import control.Try._
+import control.{Reader, State, Try, Writer}
 import data._
 import org.scalacheck.Arbitrary
 import org.scalacheck.Gen.{const, frequency}
