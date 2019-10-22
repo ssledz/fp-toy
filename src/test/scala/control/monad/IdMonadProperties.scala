@@ -1,4 +1,4 @@
-package monad.intro
+package control.monad
 
 import data.IdInstances.Id
 import control.MonadInstances._

@@ -1,4 +1,4 @@
-package monad.intro
+package control.monad
 
 import data.Eq
 import control.MonadInstances._

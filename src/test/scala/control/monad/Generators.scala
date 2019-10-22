@@ -1,4 +1,4 @@
-package monad.intro
+package control.monad
 
 import control.{Failure, Reader, State, Success, Try, Writer}
 import data._

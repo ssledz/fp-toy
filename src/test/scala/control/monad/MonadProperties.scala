@@ -1,4 +1,4 @@
-package monad.intro
+package control.monad
 
 import org.scalacheck.Properties
 

@@ -1,4 +1,4 @@
-package monad.intro
+package control.monad
 
 import control.{Monad, MonadInstances, Writer}
 import data.MonoidInstances._
