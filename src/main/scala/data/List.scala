@@ -1,4 +1,4 @@
-package monad.intro
+package data
 
 import scala.annotation.tailrec
 

@@ -1,11 +1,13 @@
 package monad.intro
 
+import control.{Failure, Reader, State, Success, Try, Writer}
+import data._
 import org.scalacheck.Arbitrary
 import org.scalacheck.Gen.{const, frequency}
 
 trait Generators {
-  implicit def listArbitrary[A](implicit arb: Arbitrary[scala.List[A]]): Arbitrary[List[A]] = Arbitrary(
-    arb.arbitrary.map(l => l.foldLeft(List.empty[A])((xs, x) => ::(x, xs)))
+  implicit def listArbitrary[A](implicit arb: Arbitrary[scala.List[A]]): Arbitrary[data.List[A]] = Arbitrary(
+    arb.arbitrary.map(l => l.foldLeft(data.List.empty[A])((xs, x) => ::(x, xs)))
   )
 
   implicit def optionArbitrary[A](implicit arb: Arbitrary[A]): Arbitrary[Option[A]] = Arbitrary(

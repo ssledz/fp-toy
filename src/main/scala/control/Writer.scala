@@ -1,4 +1,6 @@
-package monad.intro
+package control
+
+import data.Monoid
 
 case class Writer[L, A](run: (L, A)) {
 

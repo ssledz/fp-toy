@@ -1,4 +1,6 @@
-package monad.intro
+package data
+
+import control.Monad
 
 object IdInstances {
 

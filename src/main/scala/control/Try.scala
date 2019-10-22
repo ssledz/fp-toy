@@ -1,4 +1,4 @@
-package monad.intro
+package control
 
 trait Try[+A] {
 

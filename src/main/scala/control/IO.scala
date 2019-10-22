@@ -1,6 +1,4 @@
-package monad.intro
-
-import monad.intro.IO._
+package control
 
 trait IO[A] {
 
@@ -10,7 +8,7 @@ trait IO[A] {
 
   def flatMap[B](f: A => IO[B]): IO[B] = IO(f(self.run).run)
 
-  def map[B](f: A => B): IO[B] = flatMap(a => pure(f(a)))
+  def map[B](f: A => B): IO[B] = flatMap(a => IO.pure(f(a)))
 
 }
 
@@ -21,6 +19,5 @@ object IO {
   }
 
   def pure[A](a: A): IO[A] = IO(a)
-
 
 }

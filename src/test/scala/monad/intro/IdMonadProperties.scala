@@ -1,7 +1,7 @@
 package monad.intro
 
-import monad.intro.IdInstances.Id
-import monad.intro.MonadInstances._
+import data.IdInstances.Id
+import control.MonadInstances._
 import org.scalacheck.{Arbitrary, Gen}
 
 case object IdMonadProperties extends AbstractMonadProperties[String, Int, Int, Id]("IdMonad") {

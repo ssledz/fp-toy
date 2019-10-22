@@ -1,5 +1,6 @@
-package monad.intro
+package control
 
+import data._
 case class State[S, A](run: S => (S, A)) {
 
   def flatMap[B](f: A => State[S, B]): State[S, B] = State { s =>
@@ -19,12 +20,13 @@ object State {
 
   def pure[S, A](a: A): State[S, A] = State(s => (s, a))
 
-  def sequence[S, A](xs: List[State[S, A]]): State[S, List[A]] = xs match {
-    case Nil => State(s => (s, List.empty))
-    case h :: t => for {
-      a <- h
-      as <- sequence(t)
-    } yield ::(a, as)
+  def sequence[S, A](xs: data.List[State[S, A]]): State[S, data.List[A]] = xs match {
+    case Nil => State(s => (s, data.List.empty))
+    case h :: t =>
+      for {
+        a <- h
+        as <- sequence(t)
+      } yield data.::(a, as)
   }
 
 }

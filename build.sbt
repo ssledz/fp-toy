@@ -78,3 +78,4 @@ testFrameworks := Seq(TestFrameworks.ScalaCheck, TestFrameworks.ScalaTest)
 
 enablePlugins(ScalafmtPlugin)
 
+unmanagedSourceDirectories in Compile += baseDirectory.value / "src" / "examples" / "scala"

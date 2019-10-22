@@ -1,7 +1,7 @@
-package functor
+package data
 
-import functor.FunctorInstances._
-import functor.FunctorSyntax._
+import FunctorInstances._
+import FunctorSyntax._
 
 object FunctionExample extends App {
 

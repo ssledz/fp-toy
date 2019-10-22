@@ -1,11 +1,12 @@
 package monad.intro
 
-import monad.intro.MonoidInstances._
+import control.{Monad, MonadInstances, Writer}
+import data.MonoidInstances._
 import org.scalacheck.{Arbitrary, Gen, Properties}
 
 object WriterMonadProperties extends Properties("WriterMonad") {
 
-  type ListStringWriter[A] = Writer[List[String], A]
+  type ListStringWriter[A] = Writer[data.List[String], A]
 
   private implicit val m: Monad[ListStringWriter] = MonadInstances.monadWriterInstance
 
@@ -17,11 +18,11 @@ object WriterMonadProperties extends Properties("WriterMonad") {
 
     override implicit val arbA: Arbitrary[String] = Arbitrary(Gen.alphaStr)
 
-    override implicit val arbM: Arbitrary[ListStringWriter[String]] = Generators.writerArbitrary[List[String], String]
+    override implicit val arbM: Arbitrary[ListStringWriter[String]] = Generators.writerArbitrary[data.List[String], String]
 
-    override implicit val arbF: Arbitrary[String => ListStringWriter[Int]] = Arbitrary(Gen.oneOf(Seq(x => Writer.pure[List[String], Int](x.length))))
+    override implicit val arbF: Arbitrary[String => ListStringWriter[Int]] = Arbitrary(Gen.oneOf(Seq(x => Writer.pure[data.List[String], Int](x.length))))
 
-    override implicit val arbG: Arbitrary[Int => ListStringWriter[Int]] = Arbitrary(Gen.oneOf(Seq(x => Writer.pure[List[String], Int](x + 1))))
+    override implicit val arbG: Arbitrary[Int => ListStringWriter[Int]] = Arbitrary(Gen.oneOf(Seq(x => Writer.pure[data.List[String], Int](x + 1))))
   }
 
 }

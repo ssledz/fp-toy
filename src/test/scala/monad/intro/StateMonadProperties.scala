@@ -1,6 +1,8 @@
 package monad.intro
 
-import monad.intro.MonadInstances._
+import data.Eq
+import control.MonadInstances._
+import control.State
 import org.scalacheck.Gen.Parameters
 import org.scalacheck.{Arbitrary, Gen, Properties}
 

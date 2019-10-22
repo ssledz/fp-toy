@@ -1,21 +1,21 @@
-package monad.intro
+package control
 
-import monad.intro.MonoidInstances._
+import data.MonoidInstances._
 
 object WriterExample extends App {
 
-  type Logger[A] = Writer[List[String], A]
+  type Logger[A] = Writer[data.List[String], A]
 
   def sum(xs: Logger[Int], ys: Logger[Int]): Logger[Int] = for {
     x <- xs
     y <- ys
-    _ <- Writer.tell(List(s"$x + $y"))
+    _ <- Writer.tell(data.List(s"$x + $y"))
   } yield x + y
 
   def sub(xs: Logger[Int], ys: Logger[Int]): Logger[Int] = for {
     x <- xs
     y <- ys
-    _ <- Writer.tell(List(s"$x - $y"))
+    _ <- Writer.tell(data.List(s"$x - $y"))
   } yield x - y
 
   val res = sum(Writer.pure(1), Writer.pure(2))

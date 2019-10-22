@@ -1,6 +1,7 @@
 package monad.intro
 
-import monad.intro.MonadInstances._
+import control.MonadInstances._
+import control.Try
 import org.scalacheck.{Arbitrary, Gen}
 
 case object TryMonadProperties extends AbstractMonadProperties[String, Int, Int, Try]("TryMonad") {

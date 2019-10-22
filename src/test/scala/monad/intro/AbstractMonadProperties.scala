@@ -1,6 +1,9 @@
 package monad.intro
 
-import monad.intro.EqSyntax._
+import control.Monad
+import data.Eq
+import data.Eq
+import data.EqSyntax._
 import org.scalacheck.Prop.forAll
 import org.scalacheck._
 

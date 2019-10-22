@@ -1,4 +1,4 @@
-package monad.intro
+package control
 
 object TryExample extends App {
 

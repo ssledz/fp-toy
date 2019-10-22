@@ -1,14 +1,16 @@
-package monad.intro
+package data
+
+import control.Monad
 
 object EitherExample extends App {
 
-  def parse(x: String): Either[String, Int] = try {
-    Either.pure(x.toInt)
+  def parse(x: String): data.Either[String, Int] = try {
+    data.Either.pure(x.toInt)
   } catch {
     case e: Exception => Left(s"Error during parsing $x: ${e.getMessage}")
   }
 
-  def sum(a: String, b: String): Either[String, Int] = for {
+  def sum(a: String, b: String): data.Either[String, Int] = for {
     x <- parse(a)
     y <- parse(b)
   } yield x + y
@@ -16,10 +18,10 @@ object EitherExample extends App {
   println(sum("1", "2"))
   println(sum("a", "2"))
 
-  import MonadInstances._
+  import control.MonadInstances._
 
-  type StringOr[A] = Either[String, A]
-  
+  type StringOr[A] = data.Either[String, A]
+
   println(Monad[StringOr].pure(1))
 
 }

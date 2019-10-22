@@ -1,4 +1,4 @@
-package monad.intro
+package control
 
 case class Reader[E, A](run: E => A) {
 

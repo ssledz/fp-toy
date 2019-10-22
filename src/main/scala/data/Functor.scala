@@ -1,4 +1,4 @@
-package functor
+package data
 
 trait Functor[F[_]] {
 

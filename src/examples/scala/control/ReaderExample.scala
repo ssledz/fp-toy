@@ -1,6 +1,6 @@
-package monad.intro
+package control
 
-import monad.intro.Reader.{ask, asks}
+import control.Reader.{ask, asks}
 
 object ReaderExample extends App {
 

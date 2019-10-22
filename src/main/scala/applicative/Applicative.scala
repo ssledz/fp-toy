@@ -1,7 +1,6 @@
 package applicative
 
-import functor.Functor
-import monad.intro.Option
+import data.{Functor, Option}
 
 trait Applicative[F[_]] extends Functor[F] {
 

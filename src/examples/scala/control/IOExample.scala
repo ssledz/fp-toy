@@ -1,7 +1,8 @@
-package monad.intro
+package control
+
+import control.MonadInstances._
 
 import scala.io.StdIn
-import MonadInstances._
 
 object IOExample extends App {
 

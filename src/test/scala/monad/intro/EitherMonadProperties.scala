@@ -1,11 +1,11 @@
 package monad.intro
 
-import monad.intro.MonadInstances._
+import control.MonadInstances._
 import org.scalacheck.{Arbitrary, Gen, Properties}
 
 object EitherMonadProperties extends Properties("EitherMonad") {
 
-  type StringEither[A] = Either[String, A]
+  type StringEither[A] = data.Either[String, A]
 
   include(StringEitherMonadProperties)
 
@@ -15,9 +15,9 @@ object EitherMonadProperties extends Properties("EitherMonad") {
 
     override implicit val arbM: Arbitrary[StringEither[String]] = Generators.eitherArbitrary
 
-    override implicit val arbF: Arbitrary[String => StringEither[Int]] = Arbitrary(Gen.oneOf(Seq(x => Either.pure(x.length))))
+    override implicit val arbF: Arbitrary[String => StringEither[Int]] = Arbitrary(Gen.oneOf(Seq(x => data.Either.pure(x.length))))
 
-    override implicit val arbG: Arbitrary[Int => StringEither[Int]] = Arbitrary(Gen.oneOf(Seq(x => Either.pure(x + 1))))
+    override implicit val arbG: Arbitrary[Int => StringEither[Int]] = Arbitrary(Gen.oneOf(Seq(x => data.Either.pure(x + 1))))
   }
 
 }

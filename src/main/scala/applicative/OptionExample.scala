@@ -2,7 +2,7 @@ package applicative
 
 import applicative.ApplicativeInstances._
 import applicative.ApplicativeSyntax._
-import monad.intro.Option
+import data.Option
 
 object OptionExample extends App {
 
