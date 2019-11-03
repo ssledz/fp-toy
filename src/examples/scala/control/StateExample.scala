@@ -10,10 +10,6 @@ object StateExample {
 
   def main(args: Array[String]): Unit = {
 
-    import MonadInstances._
-
-    Monad[StackState]
-
     def ret: StackState[Int] = State {
       case (regs, stack) =>
         val res = if (stack.isEmpty) regs.headOption.getOrElse(0) else stack.head.toInt
