@@ -2,11 +2,11 @@ organization        := "io.github.ssledz"
 name                := "fp-toy"
 version             := "0.0.1-SNAPSHOT"
 
-scalaVersion        := "2.12.8"
+scalaVersion        := "2.13.3"
 
 
 val scalaCheck = "org.scalacheck" %% "scalacheck" % "1.14.0" % Test
-val scalaTest  = "org.scalatest"  %% "scalatest"  % "3.0.7"  % Test
+val scalaTest  = "org.scalatest"  %% "scalatest"  % "3.2.2"  % Test
 
 libraryDependencies ++= Seq(scalaCheck, scalaTest)
 
@@ -31,7 +31,7 @@ def scalacOptionsForVersion(version: String): Seq[String] = {
     "-Xlint:inaccessible",               // Warn about inaccessible types in method signatures.
     "-Xlint:infer-any",                  // Warn when a type argument is inferred to be `Any`.
     "-Xlint:missing-interpolator",       // A string literal appears to be missing an interpolator id.
-    "-Xlint:nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
+//    "-Xlint:nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
     "-Xlint:nullary-unit",               // Warn when nullary methods return Unit.
     "-Xlint:option-implicit",            // Option.apply used implicit view.
     "-Xlint:package-object-classes",     // Class or object defined in package object.

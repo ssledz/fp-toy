@@ -1,6 +1,6 @@
 package control
 
-case class Reader[E, A](run: E => A) {
+case class Reader[E, +A](run: E => A) {
 
   def flatMap[B](f: A => Reader[E, B]): Reader[E, B] = Reader { e =>
     val a = run(e)
