@@ -10,12 +10,24 @@ object FreeMonadExample extends App {
 
   sealed trait ConsoleApi[A] {
     def toFun0: () => A
+    def toReader: Reader[TestEnvironment, A]
   }
   case object ReadLine extends ConsoleApi[String] {
     def toFun0: () => String = () => scala.io.StdIn.readLine()
+
+    def toReader: Reader[TestEnvironment, String] = Reader { env =>
+      val input = env.in.next()
+      env.logger.append(s"readLine($input)")
+      input
+    }
   }
   case class PrintLine(line: String) extends ConsoleApi[Unit] {
-    override def toFun0: () => Unit = () => println(line)
+    def toFun0: () => Unit = () => println(line)
+
+    def toReader: Reader[TestEnvironment, Unit] = Reader { env =>
+      env.logger.append(s"println($line)")
+      ()
+    }
   }
 
   val readLine: Free[ConsoleApi, String] = Free.suspend(ReadLine)
@@ -29,23 +41,7 @@ object FreeMonadExample extends App {
   case class TestEnvironment(in: Iterator[String], logger: mutable.Buffer[String] = mutable.Buffer.empty)
 
   val readerInterpreter = new (ConsoleApi ~> Reader[TestEnvironment, *]) {
-
-    def readLine: Reader[TestEnvironment, String] = Reader { env =>
-      val input = env.in.next()
-      env.logger.append(s"readLine($input)")
-      input
-    }
-
-    def printLine(line: String): Reader[TestEnvironment, Unit] =
-      Reader { env =>
-        env.logger.append(s"println($line)")
-        ()
-      }
-
-    override def apply[A](fa: ConsoleApi[A]): Reader[TestEnvironment, A] = fa match {
-      case ReadLine => readLine
-      case PrintLine(line) => printLine(line)
-    }
+    def apply[A](fa: ConsoleApi[A]): Reader[TestEnvironment, A] = fa.toReader
   }
 
   val program = for {
