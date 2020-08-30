@@ -2,7 +2,7 @@ package control
 
 import control.Try._
 
-trait Try[+A] {
+sealed trait Try[+A] {
 
   def flatMap[B](f: A => Try[B]): Try[B] = this match {
     case Success(a) => f(a)
@@ -10,6 +10,11 @@ trait Try[+A] {
   }
 
   def map[B](f: A => B): Try[B] = flatMap(a => Try.pure(f(a)))
+
+  def getOrElse[B >: A](default: B): B = this match {
+    case Failure(_) => default
+    case Success(a) => a
+  }
 
 }
 
@@ -19,13 +24,13 @@ object Try {
     try {
       Success(a)
     } catch {
-      case e: Exception => Failure(e)
+      case e: Throwable => Failure(e)
     }
 
   def pure[A](a: => A): Try[A] = apply(a)
 
   case class Success[A](a: A) extends Try[A]
 
-  case class Failure(exception: Exception) extends Try[Nothing]
+  case class Failure(err: Throwable) extends Try[Nothing]
 
 }

@@ -59,4 +59,9 @@ object MonadInstances {
       xs.flatMap(f)
   }
 
+  implicit val function0Instance: Monad[Function0] = new Monad[Function0] {
+    override def pure[A](x: A): () => A = () => x
+
+    override def flatMap[A, B](xs: () => A)(f: A => () => B): () => B = f(xs())
+  }
 }

@@ -76,6 +76,8 @@ scalacOptions in (Compile, console) ~= (_.filterNot(badConsoleFlags.contains(_))
 
 testFrameworks := Seq(TestFrameworks.ScalaCheck, TestFrameworks.ScalaTest)
 
+addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.11.0" cross CrossVersion.full)
+
 enablePlugins(ScalafmtPlugin)
 
 unmanagedSourceDirectories in Compile += baseDirectory.value / "src" / "examples" / "scala"
